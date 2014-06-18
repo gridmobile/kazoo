@@ -521,7 +521,7 @@
           "description": "The option to determine if early media from the call forwarded number should ignored",
           "default": true
         },
-        "failure": {
+        "failover": {
           "type": "boolean",
           "required": false,
           "name": "Use if Device Offline?",
