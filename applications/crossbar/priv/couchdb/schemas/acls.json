@@ -1,36 +1,44 @@
 {
    "_id":"acls",
-   "id":"http://json-schema.org/draft-03/schema#",
-   "description":"Schemas for FreeSWITCH's ACLs",
-   "properties":{
+   "$schema": "http://json-schema.org/draft-04/schema#",
+   "type": "object",
+   "required": true,
+   "description": "ACL entries",
+   "additionalProperties": false,
+   "properties": {
       "cidr":{
-         "description":"IP address and mask of the ACL",
-         "required":true,
-         "type":"string"
+         "type": "string",
+         "required": true,
+         "name": "CIDR",
+         "description": "Classless Inter-Domain Routing IP notation for use on the ACL"
       },
-      "network-list-name":{
-         "description":"",
-         "required":"",
-         "type":"string",
-         "enum":[
+      "network-list-name": {
+         "type" :"string",
+         "required": true,
+         "name": "ACL List",
+         "description": "The trusted list should represent anything that can issue calls without authorization.  The authoritative list should indicate inter-network routing equipment (SBC, ect).",
+         "enum": [
             "authoritative",
             "trusted"
          ]
       },
-      "type":{
-         "description":"Allow of deny this CIDR",
-         "type":"string",
-         "required":true,
-         "enum":[
+      "type": {
+         "type": "string",
+         "required": true,
+         "name": "Type",
+         "description": "Allow or deny this CIDR",
+         "enum": [
             "allow",
             "deny"
-         ]
+         ],
+         "default": "allow"
       },
-      "description":{
-         "description":"Will be added as a comment",
-         "type":"string",
-         "required":false,
-         "maxLen":30
+      "description": {
+         "type": "string",
+         "required": false,
+         "name": "Name",
+         "description": "Will be added as a comment for quick identification later",
+         "maxLen": 30
       }
    }
 }
